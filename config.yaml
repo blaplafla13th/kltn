@@ -1,0 +1,97 @@
+---
+# Tùy chỉnh định dạng
+# Mục nào đánh dấu thử nghiệm xóa hay sửa có thể gây lỗi
+documentclass: scrbook
+fontsize: 14pt # Kích thước phông chữ
+twoside: false # In 2 mặt để true
+top-margin: 2.5cm # Lề trên
+bottom-margin: 3cm # Lề dưới
+left-margin: 3.5cm # Lề trái
+right-margin: 2cm # Lề phải
+mainfont: Times New Roman # Kiểu phông chữ
+monofont: JetBrainsMono
+monofontoptions:
+  - Path = /usr/share/fonts/jetbrains-mono/
+  - Extension = .ttf
+  - UprightFont    = *-Regular
+  - ItalicFont     = *-Italic
+  - BoldFont       = *-Bold
+  - BoldItalicFont = *-BoldItalic
+line-spacing: 1.3 # Khoảng cách giữa các dòng
+indent: 1.27cm # Khoảng cách thụt đầu dòng
+parskip: 6pt # Khoảng cách giữa các đoạn
+tikzlib: calc # Thư viện tikz
+pagestyle: '`
+\fancyhead[R]{\small\leftmark}
+\fancyfoot[C]{\thepage}
+`{=latex}' # Thử nghiệm: tự viết đầu trang chân trang
+number-sections:
+  chapter: '`\arabic{chapter}`{=latex}'
+  section: '`\thechapter.\arabic{section}`{=latex}'
+  subsection: '`\thesection.\arabic{subsection}`{=latex}'
+  subsubsection: '`\thesubsection.\arabic{subsubsection}`{=latex}'
+  paragraph: '`\arabic{paragraph}`{=latex}'
+  subparagraph: '`\alph{subparagraph}`{=latex}'
+# arabic là số tự nhiên có thể thay bằng roman là số la mã nhỏ,
+# Roman là số la mã hoa, alph là chữ cái thường, Alph là chữ cái hoa
+# có thể rút gọn thành number-sections: true nếu dùng như trên
+# muốn bỏ đánh số thì xóa 7 dòng kia
+title-format:
+  chapter: '`\bfseries\fontsize{20}{20}\selectfont`{=latex}'
+  section: '`\bfseries\fontsize{18}{20}\selectfont`{=latex}'
+  subsection: '`\bfseries\fontsize{16}{18}\selectfont`{=latex}'
+  subsubsection: '`\bfseries\fontsize{14}{16}\selectfont`{=latex}'
+  paragraph: '`\hspace{1em}\fontsize{14}{16}\selectfont\rmfamily`{=latex}'
+  subparagraph: '`\hspace{2em}\fontsize{14}{16}\selectfont\rmfamily`{=latex}'
+# Thử nghiệm: tự viết định dạng tiêu đề
+toc:
+  tocdepth: 2 # Độ sâu của mục lục default 2 do tính từ 0
+  lof: true # Mục lục hình
+  lot: true # Mục lục bảng
+# bìa
+# horizontal_line: '`\fontsize{8}{16}\Pisymbol{dingbat}{69} \hspace{1.4cm}  \Huge\usym{1F56E} \hspace{1cm} \fontsize{8}{16}\Pisymbol{dingbat}{70}`{=latex}'
+frame_type: 2 # kiểu khung 0 là tự viết, còn có khung 1,2,3
+frame: '` `{=latex}'
+# Thử nghiệm: tự viết khung với framekind 0, không viết sẽ không có khung# Thử nghiệm: đường cắt phần tên và logo
+# bìa ngoài
+titlepage_cover: true
+content_type: 2 # kiểu khung 0 là tự viết, còn có kiểu khác
+titlepage_content: '` `{=latex}'
+# Thử nghiệm: để tùy chỉnh các mục như tên mã sinh viên bằng latex...
+# bìa trong
+second_titlepage_cover: true
+second_content_type: 3 # kiểu khung 0 là tự viết, còn có kiểu khác như 1
+second_titlepage_content: '` `{=latex}'
+# khác
+tables-vrules: true # Thử nghiệm: Bảng có đường kẻ dọc
+tables-hrules: true # Thử nghiệm: Bảng có đường kẻ ngang
+pandoc-latex-environment: # Thử nghiệm: Gắn môi trường latex với class
+  center: [center]
+  flushright: [right]
+  centerboxed: [centerboxed]
+  sign: [sign]
+header-includes:
+  - '```
+  \usepackage{float}
+  \makeatletter\def\fps@figure{H}\makeatother
+  
+  \newcommand{\R}{\mathbb{R}}
+  \newcommand{\A}{\mathcal{A}}
+  \newcommand\eqdef{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny def}}}{=}}}
+  
+  \usepackage{algorithm}
+  \usepackage[noEnd=false]{algpseudocodex}
+  \floatname{algorithm}{Thuật toán}
+  \renewcommand{\listalgorithmname}{Danh sách thuật toán}
+  \tikzset{algpxIndentLine/.style={black}}
+  
+  \usepackage{threeparttablex}
+  \usepackage{makecell}
+  
+  \titlespacing{\chapter}{0pt}{-20pt}{1cm}
+  \titleformat{\chapter}{\bfseries\fontsize{20}{20}\selectfont}{Chương \thechapter.}{1em}{}
+  ```{=latex}'
+
+link-citations: true
+link-bibliography: true
+---

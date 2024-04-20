@@ -1,0 +1,2 @@
+docker run --rm --user `id -u`:`id -g` -v .:/workspace ngocptblaplafla/pandoc-texlive-full:latest --defaults vnthesis main.md -o result.tex
+docker run --rm --user `id -u`:`id -g` -v .:/workspace ngocptblaplafla/pandoc-texlive-full:latest --defaults vnthesis main.md
